@@ -4,7 +4,7 @@ import './App.css';
 import TodoList from './TodoList';
 import { v4 as uuidv4 } from 'uuid';
 
-const LOCAL_STORAGE_KEY = 'todoApp.todos';
+const LOCAL_STORAGE_KEY = 'todoApp.todo';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -37,14 +37,20 @@ function App() {
     todoNameRef.current.value = null;
   }
 
+  // clear list
+  function handleClearTodo() {
+    const newTodos = todos.filter(todo => !todo.complete);
+    setTodos(newTodos);
+  }
+
   return (
     <>
       <div className="wrapper">
         <input ref={todoNameRef} type="text" />
         <button onClick={handleAddTodo}>Add Todo</button>
-        <button>Clear Completed Todos</button>
+        <button onClick={handleClearTodo}>Clear Completed Todos</button>
       </div>
-      <p>{todos.length} Left to do</p>
+      <p>{todos.filter(todo => !todo.complete).length} Left to do</p>
       <TodoList todos={todos} toggleTodo={toggleTodo} />
     </>
   );
