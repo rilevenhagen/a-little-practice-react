@@ -9,6 +9,7 @@ export default function Todo({ todo, toggleTodo }) {
     <div className="wrapper">
       <label>
         <input
+          id="check"
           type="checkbox"
           checked={todo.complete}
           onChange={handleTodoClick}

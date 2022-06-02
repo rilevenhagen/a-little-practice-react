@@ -45,13 +45,15 @@ function App() {
 
   return (
     <>
-      <div className="wrapper">
+      <div className="wrapper container">
         <input ref={todoNameRef} type="text" />
         <button onClick={handleAddTodo}>Add Todo</button>
         <button onClick={handleClearTodo}>Clear Completed Todos</button>
       </div>
-      <p>{todos.filter(todo => !todo.complete).length} Left to do</p>
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
+      <div className="wrapper container">
+        <p>{todos.filter(todo => !todo.complete).length} Left to do</p>
+        <TodoList todos={todos} toggleTodo={toggleTodo} />
+      </div>
     </>
   );
 }
